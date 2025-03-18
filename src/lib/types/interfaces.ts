@@ -74,9 +74,18 @@ export interface CommandOptions {
     description: string;
     required?: boolean;
     type?: CommandOptionType;
+    options?: CommandOptions;
 }
 
 export type CommandListener = (
     instance: Client,
     interaction: ChatInputCommandInteraction,
 ) => Awaitable<unknown>;
+
+/* -------------------------------------------------------------------------- */
+/*     A interface to determine the values of the public config yaml file     */
+/* -------------------------------------------------------------------------- */
+
+export interface Config {
+    debug: boolean;
+}

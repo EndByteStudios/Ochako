@@ -1,5 +1,5 @@
 import { Client } from "@/ochako";
-import { env } from "@lib/utils";
+import { env, logger } from "@lib/utils";
 import { GatewayIntentBits as Intents } from "discord.js";
 import path from "node:path";
 
@@ -9,6 +9,8 @@ const client = new Client({
     commandsPath: path.join(__dirname, "commands"),
 });
 
-client.login(env("TOKEN")).then();
+client.login(env("CLIENT_TOKEN")).then(() => {
+    logger.debug("Client Token has been logged in");
+});
 client.registerEvents();
 client.registerCommands();
